@@ -1,66 +1,105 @@
-# Fraud-Detection-using-Random-forest-
-Overview
+# 📰 AI-Based Fake News Detector
 
-This project implements a fraud detection system using the Random Forest algorithm in a Google Colab environment. The model analyzes financial transaction data to classify transactions as fraudulent or legitimate, utilizing machine learning techniques to enhance accuracy and reliability.
-Features
+This repository contains an **AI-based Fake News Detection System** that classifies news articles as **Fake** or **Real** using **Naïve Bayes Classifier** based on **Bayes' Theorem**. The model is trained using **TF-IDF vectorization** and can be deployed for real-time detection.
 
-  1. Data Preprocessing:
-        Handles missing values, encodes categorical variables and normalizes numerical features.
+---
 
- 2. Random Forest Classifier:
-        Uses ensemble learning to improve prediction accuracy and reduce overfitting.
+## 📌 Features
+- **Dataset**: Uses the Fake & Real News Dataset from Kaggle
+- **Algorithm**: Naïve Bayes (Bayes' Theorem)
+- **Libraries Used**: Scikit-learn, Pandas, NumPy, Matplotlib
+- **Performance Metrics**: Accuracy, Precision, Recall, F1-score
+- **Model Deployment**: Save & Load model using Pickle
 
- 3.  Model Evaluation:
-        Assesses performance using metrics such as accuracy, precision, recall, F1-score, and ROC-AUC.
+---
 
-4. Visualizations:
-        Provides visual insights into feature importance and model performance metrics.
+## 📂 Dataset
+The dataset consists of real and fake news articles, with labeled categories:
+- `fake.csv`: Contains fake news articles.
+- `true.csv`: Contains real news articles.
 
-Getting Started
+To download the dataset directly from Kaggle, use:
+```python
+!pip install kaggle
+!mkdir -p ~/.kaggle
+!echo '{"username":"YOUR_USERNAME","key":"YOUR_API_KEY"}' > ~/.kaggle/kaggle.json
+!kaggle datasets download -d clmentbisaillon/fake-and-real-news-dataset --unzip
+```
 
-    Clone the Repository:
+---
 
-    bash
+## 🚀 Installation & Usage
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/YOUR_USERNAME/Fake-News-Detector.git
+cd Fake-News-Detector
+```
 
-git clone https://github.com/yourusername/fraud-detection-random-forest.git
-cd fraud-detection-random-forest
+### 2️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-Open the Google Colab Notebook:
+### 3️⃣ Train the Model
+```python
+python train.py
+```
 
-    Click here to access the Colab notebook.
+### 4️⃣ Test the Model
+```python
+python test.py
+```
 
-Set Up the Environment:
+### 5️⃣ Save & Load the Model
+```python
+import pickle
 
-    Install necessary libraries if not already available:
+# Save Model
+with open("fake_news_model.pkl", "wb") as model_file:
+    pickle.dump(model, model_file)
 
-    python
+# Load Model
+with open("fake_news_model.pkl", "rb") as model_file:
+    loaded_model = pickle.load(model_file)
+```
 
-        !pip install pandas scikit-learn matplotlib seaborn
+---
 
-    Run the Notebook:
-        Follow the instructions in the notebook to load the dataset, preprocess data, train the model, and visualize results.
+## 📊 Data Visualization
+To visualize the dataset, use the following code:
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
 
-Usage
+# Load dataset
+df_fake = pd.read_csv("Fake.csv")
+df_real = pd.read_csv("True.csv")
 
-    Replace the dataset with your own financial transaction data to analyze different scenarios.
-    Experiment with Random Forest parameters to optimize model performance.
-    Visualize results to gain insights into fraud detection.
+# Data distribution
+plt.figure(figsize=(6,4))
+sns.countplot(y=["Fake"]*len(df_fake) + ["Real"]*len(df_real))
+plt.title("Fake vs Real News Distribution")
+plt.show()
+```
 
-Requirements
+---
 
-    Python 3.x
-    Google Colab
-    Libraries: Pandas, Scikit-learn, Matplotlib, Seaborn
+## 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Contributing
+---
 
-Feel free to fork the repository, create a pull request, or open an issue if you have suggestions or improvements.
-License
+## 🤝 Contributing
+We welcome contributions! Feel free to open an issue or submit a pull request.
 
-This project is licensed under the MIT License. See the LICENSE file for details.
-Acknowledgments
+---
 
-    Scikit-learn Documentation
-    Pandas Documentation
-    Matplotlib Documentation
-    Seaborn Documentation
+## 📝 Author
+**Mann Jadhav**
+
+---
+
+## ⭐ Show Your Support
+If you like this project, please ⭐ the repository!
+
